@@ -69,4 +69,65 @@ Suppose you need to pick 6 unique numbers for a lottery ticket, where the number
 ```python
 lottery_numbers = get_numbers_ticket(1, 49, 6)
 print("Your lottery numbers:", lottery_numbers)
+---
+
+## Task 3
+
+Your company runs an active marketing campaign via SMS messaging. You collect customer phone numbers from the database but often face inconsistent formats. Examples include:
+
+- "    +38(050)123-32-34"
+- "     0503451234"
+- "(050)8889900"
+- "38050-111-22-22"
+- "38050 111 22 11   "
+
+Your SMS service can effectively send messages only when phone numbers are in the correct format. Therefore, you need a function that automatically normalizes phone numbers by removing all unnecessary characters and adding the country code if needed.
+
+Create a function `normalize_phone(phone_number)` that normalizes phone numbers to a standard format, keeping only digits and a '+' sign at the start. The function accepts a phone number string in any format and converts it to the standard format containing only digits and a leading '+'. If the number does not contain an international code, the function automatically adds the code '+38' (for Ukraine). This ensures all numbers are suitable for sending SMS.
+
+### Requirements:
+- The function parameter `phone_number` is a string representing a phone number in various formats.
+- The function removes all characters except digits and the '+' symbol.
+- If the international code is missing, the function adds '+38'. This accounts for cases when the number starts with '380' (only '+' is added) and when the number starts without any code (then '+38' is added).
+- The function returns the normalized phone number as a string.
+
+---
+
+### Recommendations for Implementation:
+- Use the `re` module for regular expressions to remove unwanted characters.
+- Check if the number starts with '+', and adjust the prefix according to the requirements.
+- Remove all characters except digits and '+' from the phone number.
+- Don’t forget to return the normalized phone number from the function.
+
+---
+
+### Evaluation Criteria:
+- Correctness: The function should correctly handle various formats, considering the presence or absence of the international code.
+- Code readability: The code should be clean, well-structured, and well documented.
+- Proper use of regular expressions to remove unwanted characters and format the number.
+
+---
+
+### Example Usage:
+
+```python
+raw_numbers = [
+    "067\t123 4567",
+    "(095) 234-5678\n",
+    "+380 44 123 4567",
+    "380501234567",
+    "    +38(050)123-32-34",
+    "     0503451234",
+    "(050)8889900",
+    "38050-111-22-22",
+    "38050 111 22 11   ",
+]
+
+sanitized_numbers = [normalize_phone(num) for num in raw_numbers]
+print("Normalized phone numbers for SMS sending:", sanitized_numbers)
+
+### Expected output:
+Normalized phone numbers for SMS sending: ['+380671234567', '+380952345678', '+380441234567', '+380501234567', '+380501233234', '+380503451234', '+380508889900', '+380501112222', '+380501112211']
+
+
 
