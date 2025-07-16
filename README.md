@@ -28,3 +28,45 @@ Create a function `get_days_from_today(date)` that calculates the number of days
 - **Code readability**: The code should be clean and well documented.
 
 ---
+
+## Task 2
+
+To win the grand prize in a lottery, you need to match several numbers on your ticket with randomly drawn numbers within a certain range during the drawing. For example, you might need to guess six numbers from 1 to 49, or five numbers from 1 to 36, etc.
+
+You need to write a function `get_numbers_ticket(min, max, quantity)` that helps generate a set of unique random numbers for such lotteries. The function should return a random set of numbers within the specified parameters, ensuring all numbers in the set are unique.
+
+### Requirements:
+- Function parameters:
+  - `min` — the minimum possible number in the set (at least 1).
+  - `max` — the maximum possible number in the set (no more than 1000).
+  - `quantity` — the number of numbers to pick (value between `min` and `max`).
+- The function generates the specified quantity of unique numbers within the given range.
+- The function returns a sorted list of randomly selected unique numbers.
+- If the parameters do not meet the constraints, the function returns an empty list.
+
+---
+
+### Recommendations for Implementation:
+- Ensure input parameters meet the specified constraints.
+- Use the `random` module to generate random numbers.
+- Use a set or another mechanism to ensure the uniqueness of the numbers.
+- Remember that `get_numbers_ticket` returns a sorted list of unique numbers.
+
+---
+
+### Evaluation Criteria:
+- **Input validity**: The function must validate the parameters correctly.
+- **Uniqueness**: All numbers in the output must be unique.
+- **Requirement compliance**: The result must be a sorted list.
+- **Code readability**: The code should be clean and well documented.
+
+---
+
+### Example:
+
+Suppose you need to pick 6 unique numbers for a lottery ticket, where the numbers must be in the range from 1 to 49. You can use your function like this:
+
+```python
+lottery_numbers = get_numbers_ticket(1, 49, 6)
+print("Your lottery numbers:", lottery_numbers)
+
